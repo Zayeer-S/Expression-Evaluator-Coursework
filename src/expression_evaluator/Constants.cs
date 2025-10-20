@@ -1,4 +1,16 @@
 static class Constants {
+    public static IReadOnlyDictionary<string, string> NormalizationMap()
+    {
+        return new Dictionary<string, string>
+        {
+            { "≤", "<=" },
+            { "≥", ">=" },
+            { "≠", "!=" },
+            { "×", "*" },
+            { "÷", "/" },
+        };
+    }
+
     public static IReadOnlyDictionary<string, int> PrecedenceMap()
     {
         var precedence = new Dictionary<string, int>();
