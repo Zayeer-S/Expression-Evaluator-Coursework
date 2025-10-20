@@ -37,7 +37,6 @@ static class Constants {
         {
             { "or", 1 },
             { "and", 2 },
-            { "not", 3 },
         };
     }
 
@@ -89,6 +88,7 @@ static class Constants {
     {
         return new Dictionary<string, int>
         {
+            { "not", 3 },
             { "UNARY_MINUS", 8 },
             { "UNARY_PLUS", 8 },
         };
