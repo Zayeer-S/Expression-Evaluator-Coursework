@@ -1,4 +1,4 @@
-static class Evaluator
+public static class Evaluator
 {
     public static double Evaluate(ExpressionTreeNode node, Dictionary<string, double> variables)
     {

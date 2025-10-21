@@ -1,4 +1,4 @@
-static class Parser 
+public static class Parser 
 {
     public static string GetExpression()
     {

@@ -1,4 +1,4 @@
-static class Classifier
+public static class Classifier
 {
     public static bool IsBooleanExpression(List<string> tokens)
     {

@@ -1,4 +1,4 @@
-static class NormalizeTokens
+public static class NormalizeTokens
 {
     public static List<string> Normalize(List<string> tokens)
     {

@@ -1,4 +1,4 @@
-static class VariableInput
+public static class VariableInput
 {
     public static Dictionary<string, double> GetVariableValues(HashSet<string> variableNames, bool isBooleanExpression)
     {

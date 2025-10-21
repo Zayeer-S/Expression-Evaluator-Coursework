@@ -1,4 +1,4 @@
-static class ShuntingYard
+public static class ShuntingYard
 {
     public static List<string> InfixToPostfix(List<string> tokens, IReadOnlyDictionary<string, int> precedenceMap)
     {

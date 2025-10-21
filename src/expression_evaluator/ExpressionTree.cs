@@ -1,4 +1,4 @@
-class ExpressionTreeNode
+public class ExpressionTreeNode
 {
     public string Value { get; set; }
     public ExpressionTreeNode? Left { get; set; }

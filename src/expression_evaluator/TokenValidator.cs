@@ -1,4 +1,4 @@
-static class TokenValidator
+public static class TokenValidator
 {
     private static readonly HashSet<string> logicalOps = new HashSet<string>(Constants.LogicalOperatorsMap().Keys);
 

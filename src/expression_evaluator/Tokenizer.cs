@@ -1,4 +1,4 @@
-static class Tokenizer
+public static class Tokenizer
 {
     public static List<string> GetTokens(string expression)
     {

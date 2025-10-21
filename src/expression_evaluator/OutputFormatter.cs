@@ -1,4 +1,4 @@
-static class OutputFormatter
+public static class OutputFormatter
 {
     public static void PrintResult(double result, bool isBooleanExpression)
     {

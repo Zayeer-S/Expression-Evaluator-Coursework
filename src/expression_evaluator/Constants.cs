@@ -1,4 +1,4 @@
-static class Constants {
+public static class Constants {
     public static IReadOnlyDictionary<string, string> NormalizationMap()
     {
         return new Dictionary<string, string>
