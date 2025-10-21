@@ -1,17 +1,5 @@
 static class TokenValidator
 {
-    public static IReadOnlyDictionary<string, string> NormalizeOperators()
-    {
-        return new Dictionary<string, string>
-        {
-            { "≤", "<=" },
-            { "≥", ">=" },
-            { "≠", "!=" },
-            { "×", "*" },
-            { "÷", "/" },
-        };
-    }
-
     public static bool ValidateTokens(List<string> tokens, IReadOnlyDictionary<string, int> PRECEDENCE_MAP)
     {
         if (tokens.Count == 0)
