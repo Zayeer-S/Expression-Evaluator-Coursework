@@ -43,7 +43,7 @@ static class ExpressionTree
             {
                 if (!double.TryParse(token, out _))
                 {
-                    variableNames.Add(token.ToLower());
+                    variableNames.Add(token);
                 }
                 stack.Push(node);
             }

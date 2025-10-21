@@ -8,7 +8,7 @@ static class Evaluator
         }
         else if (char.IsLetter(node.Value[0]))
         {
-            return variables[node.Value.ToLower()];
+            return variables[node.Value];
         }
 
         return node.Value switch

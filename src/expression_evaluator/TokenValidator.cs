@@ -202,6 +202,6 @@ static class TokenValidator
             return false;
         }
 
-        return !logicalOps.Contains(token.ToLower());
+        return !logicalOps.Contains(token);
     }
 }

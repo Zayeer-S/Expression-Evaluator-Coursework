@@ -60,7 +60,7 @@ static class Tokenizer
             i++;
         }
 
-        return expression[startPos..i].ToLower();
+        return expression[startPos..i];
     }
 
     private static string GetDigitTokens(string expression, ref int i)
