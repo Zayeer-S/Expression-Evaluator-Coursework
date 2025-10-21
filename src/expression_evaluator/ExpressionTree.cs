@@ -1,5 +1,3 @@
-using Microsoft.VisualBasic;
-
 class ExpressionTreeNode
 {
     public string Value { get; set; }
@@ -31,10 +29,10 @@ class ExpressionTreeNode
 
 static class ExpressionTree
 {
-    public static ExpressionTreeNode BuildTree(List<string> postfixTokens, IReadOnlyDictionary<string, int> precedenceMap, out HashSet<string> variables)
+    public static ExpressionTreeNode BuildTree(List<string> postfixTokens, IReadOnlyDictionary<string, int> precedenceMap, out HashSet<string> variableNames)
     {
         var unaryOps = Constants.UnaryOperatorsMap().Keys;
-        variables = [];
+        variableNames = [];
         var stack = new Stack<ExpressionTreeNode>();
 
         foreach (var token in postfixTokens)
@@ -45,7 +43,7 @@ static class ExpressionTree
             {
                 if (!double.TryParse(token, out _))
                 {
-                    variables.Add(token.ToLower());
+                    variableNames.Add(token.ToLower());
                 }
                 stack.Push(node);
             }
