@@ -20,13 +20,13 @@ jobs:
                 dotnet-version: "9.x.x"
 
             - name: Restore dependencies
-              run: dotnet restore
+              run: dotnet restore src/expression_evaluator/ExpressionEvaluator.csproj
 
             - name: Build
-              run: dotnet build --configuration Release --no-restore
+              run: dotnet build src/expression_evaluator/ExpressionEvaluator.csproj --configuration Release --no-restore
             
             - name: Run tests
-              run: dotnet test --no-build --verbosity normal --configuration Release --collect:"XPlat Code Coverage"
+              run: dotnet test src/expression_evaluator/ExpressionEvaluator.csproj --no-build --verbosity normal --configuration Release --collect:"XPlat Code Coverage"
             
             - name: Upload coverage to Codecov
               uses: codecov/codecov-action@v4
