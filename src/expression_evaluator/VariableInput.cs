@@ -1,6 +1,4 @@
-using System.Net;
-
-static class VariableInputParser
+static class VariableInput
 {
     public static Dictionary<string, double> GetVariableValues(HashSet<string> variableNames)
     {

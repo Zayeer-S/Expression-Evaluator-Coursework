@@ -22,10 +22,10 @@
 
         do
         {
-            var variables = VariableInputParser.GetVariableValues(variableNames);
+            var variables = VariableInput.GetVariableValues(variableNames);
             var result = Evaluator.Evaluate(tree, variables);
             OutputFormatter.PrintResult(result);
         }
-        while (VariableInputParser.PromptForReEvaluation());
+        while (VariableInput.PromptForReEvaluation());
     }
 }
