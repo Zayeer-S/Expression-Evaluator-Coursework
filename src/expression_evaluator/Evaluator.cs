@@ -20,7 +20,7 @@ static class Evaluator
             "+" => Evaluate(node.Left!, variables) + Evaluate(node.Right!, variables),
             "-" => Evaluate(node.Left!, variables) - Evaluate(node.Right!, variables),
             "*" => Evaluate(node.Left!, variables) * Evaluate(node.Right!, variables),
-            "/" => Evaluate(node.Left!, variables) / Evaluate(node.Right!, variables),
+            "/" => DivideWithCheck(node, variables),
             "^" => Math.Pow(Evaluate(node.Left!, variables), Evaluate(node.Right!, variables)),
 
             "UNARY_MINUS" => -Evaluate(node.Left!, variables),
@@ -39,6 +39,18 @@ static class Evaluator
 
             _ => throw new InvalidOperationException($"Unknown operator: {node.Value}")
         };
+    }
+
+    private static double DivideWithCheck(ExpressionTreeNode node, Dictionary<string, double> variables)
+    {
+        var divisor = Evaluate(node.Right!, variables);
+        
+        if (Math.Abs(divisor) < 1e-10)
+        {
+            throw new DivideByZeroException("Error: Division by zero");
+        }
+        
+        return Evaluate(node.Left!, variables) / divisor;
     }
 
     private static bool IsTrue(double value)

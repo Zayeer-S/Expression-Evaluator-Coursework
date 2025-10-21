@@ -26,9 +26,16 @@
 
         do
         {
-            var variables = VariableInput.GetVariableValues(variableNames, !hasNumericVariables);
-            var result = Evaluator.Evaluate(tree, variables);
-            OutputFormatter.PrintResult(result, isBooleanExpression);
+            try
+            {
+                var variables = VariableInput.GetVariableValues(variableNames, !hasNumericVariables);
+                var result = Evaluator.Evaluate(tree, variables);
+                OutputFormatter.PrintResult(result, isBooleanExpression);
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine($"\nError: {ex.Message}");
+            }
         }
         while (VariableInput.PromptForReEvaluation());
     }
