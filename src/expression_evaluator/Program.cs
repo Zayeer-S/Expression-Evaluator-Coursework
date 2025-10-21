@@ -34,7 +34,11 @@
             }
             catch (DivideByZeroException ex)
             {
-                Console.WriteLine($"\nError: {ex.Message}");
+                Console.WriteLine($"\n{ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"\n{ex.Message}");
             }
         }
         while (VariableInput.PromptForReEvaluation());

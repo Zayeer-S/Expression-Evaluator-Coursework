@@ -17,7 +17,7 @@ static class Evaluator
             "-" => Evaluate(node.Left!, variables) - Evaluate(node.Right!, variables),
             "*" => Evaluate(node.Left!, variables) * Evaluate(node.Right!, variables),
             "/" => DivideWithCheck(node, variables),
-            "^" => Math.Pow(Evaluate(node.Left!, variables), Evaluate(node.Right!, variables)),
+            "^" => PowerWithCheck(node, variables),
 
             "UNARY_MINUS" => -Evaluate(node.Left!, variables),
             "UNARY_PLUS" => Evaluate(node.Left!, variables),
@@ -40,13 +40,37 @@ static class Evaluator
     private static double DivideWithCheck(ExpressionTreeNode node, Dictionary<string, double> variables)
     {
         var divisor = Evaluate(node.Right!, variables);
-        
+
         if (Math.Abs(divisor) < 1e-10)
         {
             throw new DivideByZeroException("Error: Division by zero");
         }
-        
+
         return Evaluate(node.Left!, variables) / divisor;
+    }
+    
+    private static double PowerWithCheck(ExpressionTreeNode node, Dictionary<string, double> variables)
+    {
+        var baseValue = Evaluate(node.Left!, variables);
+        var exponent = Evaluate(node.Right!, variables);
+        
+        if (baseValue < 0 && Math.Abs(exponent - Math.Round(exponent)) > 1e-10)
+        {
+            throw new InvalidOperationException("Error: Cannot raise negative number to non-integer power");
+        }
+        
+        var result = Math.Pow(baseValue, exponent);
+        
+        if (double.IsNaN(result))
+        {
+            throw new InvalidOperationException("Error: Invalid power operation");
+        }
+        if (double.IsInfinity(result))
+        {
+            throw new InvalidOperationException("Error: Result is too large (infinity)");
+        }
+        
+        return result;
     }
 
     private static bool IsTrue(double value)
