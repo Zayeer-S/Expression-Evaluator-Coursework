@@ -27,7 +27,7 @@ public class ExpressionTreeNode
     }
 }
 
-static class ExpressionTree
+public static class ExpressionTree
 {
     public static ExpressionTreeNode BuildTree(List<string> postfixTokens, IReadOnlyDictionary<string, int> precedenceMap, out HashSet<string> variableNames)
     {
