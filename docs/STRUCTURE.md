@@ -4,9 +4,9 @@ Expression-Evaluator/
 │       └── dotnet.yml
 ├── src/
 │   └── expression_evaluator/
+│       ├── Classifier.cs                   # Determines whether input is boolean or arithmetic
 │       ├── Constants.cs                    # Dictionaries containing normalization and precedence heirarchies
 │       ├── Evaluator.cs                    # Evaluates tree, calculating the result
-│       ├── ExpressionEvaluator.csproj
 │       ├── ExpressionTree.cs               # Builds the tree using postfix from ShuntingYard
 │       ├── NormalizeTokens.cs              # Converts any unicode characters in tokens into ASCII
 │       ├── OutputFormatter.cs              # Prints results and information used for calculations
