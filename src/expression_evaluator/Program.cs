@@ -21,11 +21,14 @@
         var postfix = ShuntingYard.InfixToPostfix(normalizedTokens, precedenceMap);
         var tree = ExpressionTree.BuildTree(postfix, precedenceMap, out var variableNames);
 
+        var isBooleanExpression = Classifier.IsBooleanExpression(normalizedTokens);
+        var hasNumericVariables = Classifier.HasNumericVariables(normalizedTokens);
+
         do
         {
-            var variables = VariableInput.GetVariableValues(variableNames);
+            var variables = VariableInput.GetVariableValues(variableNames, !hasNumericVariables);
             var result = Evaluator.Evaluate(tree, variables);
-            OutputFormatter.PrintResult(result);
+            OutputFormatter.PrintResult(result, isBooleanExpression);
         }
         while (VariableInput.PromptForReEvaluation());
     }

@@ -1,6 +1,6 @@
 static class VariableInput
 {
-    public static Dictionary<string, double> GetVariableValues(HashSet<string> variableNames)
+    public static Dictionary<string, double> GetVariableValues(HashSet<string> variableNames, bool isBooleanExpression)
     {
         var variables = new Dictionary<string, double>();
 
@@ -15,17 +15,40 @@ static class VariableInput
         {
             while (true)
             {
-                Console.WriteLine($"{varName} = ");
-                var input = Console.ReadLine();
-
-                if (double.TryParse(input, out var value))
+                if (isBooleanExpression)
                 {
-                    variables[varName] = value;
-                    break;
+                    Console.Write($"{varName} (true/false) = ");
+                    var input = Console.ReadLine()?.Trim().ToLower();
+
+                    if (input == "true" || input == "t" || input == "1")
+                    {
+                        variables[varName] = 1.0;
+                        break;
+                    }
+                    else if (input == "false" || input == "f" || input == "0")
+                    {
+                        variables[varName] = 0.0;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter 'true' or 'false'.");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid number. Please try again");
+                    Console.Write($"{varName} = ");
+                    var input = Console.ReadLine();
+
+                    if (double.TryParse(input, out var value))
+                    {
+                        variables[varName] = value;
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid number. Please try again.");
+                    }
                 }
             }
         }

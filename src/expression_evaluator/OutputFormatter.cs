@@ -1,8 +1,16 @@
 static class OutputFormatter
 {
-    public static void PrintResult(double result)
+    public static void PrintResult(double result, bool isBooleanExpression)
     {
-        Console.WriteLine($"\nResult: {result}");
+        if (isBooleanExpression)
+        {
+            var boolResult = Math.Abs(result) > 1e-10 ? "true" : "false";
+            Console.WriteLine($"\nResult: {boolResult}");
+        }
+        else
+        {
+            Console.WriteLine($"\nResult: {result}");
+        }
     }
 
     public static void PrintTokens(List<string> tokens, string label)
