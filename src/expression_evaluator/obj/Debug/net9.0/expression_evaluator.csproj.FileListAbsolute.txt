@@ -3,7 +3,6 @@ c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\b
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\bin\Debug\net9.0\expression_evaluator.runtimeconfig.json
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\bin\Debug\net9.0\expression_evaluator.dll
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\bin\Debug\net9.0\expression_evaluator.pdb
-c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\bin\Debug\net9.0\expression_evaluator.xml
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\expression_evaluator.GeneratedMSBuildEditorConfig.editorconfig
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\expression_evaluator.AssemblyInfoInputs.cache
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\expression_evaluator.AssemblyInfo.cs
@@ -11,7 +10,6 @@ c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\o
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\expression_evaluator.sourcelink.json
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\expression_evaluator.dll
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\refint\expression_evaluator.dll
-c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\expression_evaluator.xml
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\expression_evaluator.pdb
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\expression_evaluator.genruntimeconfig.cache
 c:\Users\abdul\Documents\SHU\DSA\Expression-Evaluator\src\expression_evaluator\obj\Debug\net9.0\ref\expression_evaluator.dll
