@@ -6,10 +6,6 @@ static class Evaluator
         {
             return number;
         }
-
-        if (Constants.PrecedenceMap().ContainsKey(node.Value))
-        {
-        }
         else if (char.IsLetter(node.Value[0]))
         {
             return variables[node.Value.ToLower()];
