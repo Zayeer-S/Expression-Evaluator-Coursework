@@ -1,5 +1,7 @@
 static class TokenValidator
 {
+    private static readonly HashSet<string> logicalOps = new HashSet<string>(Constants.LogicalOperatorsMap().Keys);
+
     public static bool ValidateTokens(List<string> tokens, IReadOnlyDictionary<string, int> PRECEDENCE_MAP)
     {
         if (tokens.Count == 0)
@@ -200,7 +202,6 @@ static class TokenValidator
             return false;
         }
 
-        var keywords = new HashSet<string> { "and", "or", "not" }; // TODO
-        return !keywords.Contains(token.ToLower());
+        return !logicalOps.Contains(token.ToLower());
     }
 }
