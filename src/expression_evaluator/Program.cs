@@ -4,6 +4,7 @@
     {
         var precedenceMap = Constants.PrecedenceMap();
 
+        Console.WriteLine("Enter expression: ");
         List<string> normalizedTokens;
         while (true)
         {
