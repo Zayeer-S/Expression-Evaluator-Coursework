@@ -80,7 +80,10 @@ static class TokenValidator
                 }
             }
 
-            if (BINARY_OPS.Contains(token))
+            bool isUnaryPlusMinus = (token == "+" || token == "-") && 
+                                    (prevToken == null || prevToken == "(" || PRECEDENCE_MAP.ContainsKey(prevToken));
+
+            if (BINARY_OPS.Contains(token) && !isUnaryPlusMinus)
             {
                 if (prevToken == null || prevToken == "(" || ALL_OPS.Contains(prevToken))
                 {
@@ -90,6 +93,15 @@ static class TokenValidator
                 if (nextToken == null || nextToken == ")")
                 {
                     Console.WriteLine($"Error: Binary operator '{token}' missing right operand");
+                    return false;
+                }
+            }
+
+            if (isUnaryPlusMinus)
+            {
+                if (nextToken == null || nextToken == ")")
+                {
+                    Console.WriteLine($"Error: Unary operator '{token}' missing operand");
                     return false;
                 }
             }
@@ -110,7 +122,7 @@ static class TokenValidator
                     Console.WriteLine("Error: Empty parantheses '()'");
                     return false;
                 }
-                if (nextToken != null && BINARY_OPS.Contains(nextToken))
+                if (nextToken != null && BINARY_OPS.Contains(nextToken) && nextToken != "+" && nextToken != "-")
                 {
                     Console.WriteLine($"Error: '(' cannot be followed by binary operator '{nextToken}'");
                     return false;

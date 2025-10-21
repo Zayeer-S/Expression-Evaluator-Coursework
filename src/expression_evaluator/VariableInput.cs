@@ -38,16 +38,45 @@ static class VariableInput
                 else
                 {
                     Console.Write($"{varName} = ");
-                    var input = Console.ReadLine();
+                    var input = Console.ReadLine()?.Trim();
 
                     if (double.TryParse(input, out var value))
                     {
                         variables[varName] = value;
                         break;
                     }
+                    else if (!string.IsNullOrWhiteSpace(input))
+                    {
+                        try
+                        {
+                            var precedenceMap = Constants.PrecedenceMap();
+                            var tokens = Tokenizer.GetTokens(input);
+                            
+                            if (TokenValidator.ValidateTokens(tokens, precedenceMap))
+                            {
+                                var normalizedTokens = NormalizeTokens.Normalize(tokens);
+                                var postfix = ShuntingYard.InfixToPostfix(normalizedTokens, precedenceMap);
+                                var tree = ExpressionTree.BuildTree(postfix, precedenceMap, out var nestedVars);
+                                
+                                if (nestedVars.Count > 0)
+                                {
+                                    Console.WriteLine("Error: Cannot use variables in variable value definition.");
+                                    continue;
+                                }
+                                
+                                var result = Evaluator.Evaluate(tree, new Dictionary<string, double>());
+                                variables[varName] = result;
+                                break;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error evaluating expression: {ex.Message}");
+                        }
+                    }
                     else
                     {
-                        Console.WriteLine("Invalid number. Please try again.");
+                        Console.WriteLine("Invalid input. Please enter a number or expression.");
                     }
                 }
             }

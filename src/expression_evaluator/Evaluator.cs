@@ -6,12 +6,8 @@ static class Evaluator
         {
             return number;
         }
-        else if (char.IsLetter(node.Value[0]))
-        {
-            return variables[node.Value];
-        }
 
-        return node.Value switch
+        var result = node.Value switch
         {
             "+" => Evaluate(node.Left!, variables) + Evaluate(node.Right!, variables),
             "-" => Evaluate(node.Left!, variables) - Evaluate(node.Right!, variables),
@@ -33,8 +29,12 @@ static class Evaluator
             "or" => (IsTrue(Evaluate(node.Left!, variables)) || IsTrue(Evaluate(node.Right!, variables))) ? 1.0 : 0.0,
             "not" => IsTrue(Evaluate(node.Left!, variables)) ? 0.0 : 1.0,
 
+            _ when char.IsLetter(node.Value[0]) => variables[node.Value],
+            
             _ => throw new InvalidOperationException($"Unknown operator: {node.Value}")
         };
+        
+        return result;
     }
 
     private static double DivideWithCheck(ExpressionTreeNode node, Dictionary<string, double> variables)
