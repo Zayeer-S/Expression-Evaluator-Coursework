@@ -34,7 +34,7 @@ static class ShuntingYard
                 continue;
             }
 
-            if (IsUnaryOperator(token, i, tokens))
+            if (IsUnaryOperator(token, i, tokens, precedenceMap))
             {
                 var unaryToken = token == "-" ? "UNARY_MINUS" : "UNARY_PLUS";
                 
@@ -98,7 +98,7 @@ static class ShuntingYard
         return token != "(" && token != ")" && !precedenceMap.ContainsKey(token);
     }
 
-    private static bool IsUnaryOperator(string token, int index, List<string> tokens)
+    private static bool IsUnaryOperator(string token, int index, List<string> tokens, IReadOnlyDictionary<string, int> precedenceMap)
     {
         if (token != "+" && token != "-")
         {
@@ -112,20 +112,7 @@ static class ShuntingYard
 
         var prevToken = tokens[index - 1];
 
-        return prevToken == "(" || 
-               prevToken == "or" || 
-               prevToken == "and" || 
-               prevToken == "not" ||
-               prevToken == "+" || 
-               prevToken == "-" || 
-               prevToken == "*" || 
-               prevToken == "/" || 
-               prevToken == "^" ||
-               prevToken == "<" || 
-               prevToken == "<=" || 
-               prevToken == ">" || 
-               prevToken == ">=" || 
-               prevToken == "=" || 
-               prevToken == "!=";
+        return prevToken == "(" ||
+               precedenceMap.ContainsKey(prevToken);
     }
 }
