@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Using Include="Xunit" />
+    <ProjectReference Include="..\..\src\expression_evaluator\expression_evaluator.csproj" />
   </ItemGroup>
 
 </Project>
