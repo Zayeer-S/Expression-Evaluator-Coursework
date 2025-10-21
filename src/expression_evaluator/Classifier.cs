@@ -14,7 +14,32 @@ static class Classifier
         var arithmeticOps = Constants.AdditiveOperatorsMap().Keys
             .Concat(Constants.MultiplicativeOperatorsMap().Keys)
             .Concat(Constants.ExponentianOperatorsMap().Keys);
+        var logicalOps = Constants.LogicalOperatorsMap().Keys;
         
-        return tokens.Any(t => comparisonOps.Contains(t) || arithmeticOps.Contains(t));
+        bool hasArithmetic = tokens.Any(t => arithmeticOps.Contains(t));
+        bool hasComparison = tokens.Any(t => comparisonOps.Contains(t));
+        bool hasLogical = tokens.Any(t => logicalOps.Contains(t));
+        
+        if (hasArithmetic && !hasComparison && !hasLogical)
+        {
+            return true;
+        }
+        
+        if (!hasArithmetic && !hasComparison && hasLogical)
+        {
+            return false;
+        }
+        
+        if (hasComparison)
+        {
+            return true;
+        }
+        
+        if (!hasArithmetic && !hasComparison && !hasLogical)
+        {
+            return true;
+        }
+        
+        return true;
     }
 }
