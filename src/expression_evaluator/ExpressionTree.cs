@@ -31,9 +31,10 @@ class ExpressionTreeNode
 
 static class ExpressionTree
 {
-    public static ExpressionTreeNode BuildTree(List<string> postfixTokens, IReadOnlyDictionary<string, int> precedenceMap)
+    public static ExpressionTreeNode BuildTree(List<string> postfixTokens, IReadOnlyDictionary<string, int> precedenceMap, out HashSet<string> variables)
     {
         var unaryOps = Constants.UnaryOperatorsMap().Keys;
+        variables = [];
         var stack = new Stack<ExpressionTreeNode>();
 
         foreach (var token in postfixTokens)
@@ -42,6 +43,10 @@ static class ExpressionTree
 
             if (!precedenceMap.ContainsKey(token))
             {
+                if (!double.TryParse(token, out _))
+                {
+                    variables.Add(token.ToLower());
+                }
                 stack.Push(node);
             }
             else if (unaryOps.Contains(token))
