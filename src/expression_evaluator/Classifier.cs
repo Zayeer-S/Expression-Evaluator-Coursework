@@ -11,7 +11,10 @@ static class Classifier
     public static bool HasNumericVariables(List<string> tokens)
     {
         var comparisonOps = Constants.ComparisonOperatorsMap().Keys;
+        var arithmeticOps = Constants.AdditiveOperatorsMap().Keys
+            .Concat(Constants.MultiplicativeOperatorsMap().Keys)
+            .Concat(Constants.ExponentianOperatorsMap().Keys);
         
-        return tokens.Any(t => comparisonOps.Contains(t));
+        return tokens.Any(t => comparisonOps.Contains(t) || arithmeticOps.Contains(t));
     }
 }
